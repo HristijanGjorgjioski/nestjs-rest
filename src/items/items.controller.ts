@@ -32,7 +32,7 @@ export class ItemsController {
   }
 
   @Put(':id')
-  put(@Param('id') id): string {
-    return `Item with ID: '${id}' updated!`;
+  update(@Body() updateItemDto: CreateItemDto, @Param('id') id): string {
+    return `Item with ID: '${id}' updated! ${updateItemDto.name}`;
   }
 }
