@@ -21,7 +21,7 @@ export class ItemsController {
   }
 
   @Get(':id')
-  async findById(@Param('id') id): Promise<Item> {
+  async findById(@Param('id') id: string): Promise<Item> {
     return this.itemsService.findById(id);
   }
 
@@ -31,12 +31,15 @@ export class ItemsController {
   }
 
   @Delete(':id')
-  async delete(@Param('id') id): Promise<Item> {
+  async delete(@Param('id') id: string): Promise<Item> {
     return this.itemsService.delete(id);
   }
 
   @Put(':id')
-  async update(@Body() updateItemDto: CreateItemDto, @Param('id') id): Promise<Item> {
+  async update(
+    @Body() updateItemDto: CreateItemDto,
+    @Param('id') id: string,
+  ): Promise<Item> {
     return await this.itemsService.update(id, updateItemDto);
   }
 }
